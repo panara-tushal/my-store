@@ -64,9 +64,11 @@ function loadDeferredData({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
+  console.log("data",data);
   return (
     <div className="home">
       {data.isShopLinked ? null : <MockShopNotice />}
+      <Banner/>
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
@@ -78,6 +80,13 @@ export default function Homepage() {
  *   collection: FeaturedCollectionFragment;
  * }}
  */
+
+function Banner(){
+  return (
+    <h1>custome Home page Banner</h1>
+  )
+}
+
 function FeaturedCollection({collection}) {
   if (!collection) return null;
   const image = collection?.image;
